@@ -71,6 +71,8 @@ $ gradlew bootrun
 
 ## 화면 구성 및 설정
 
+수정이 필요한 경우에 아래 내용을 천천히 살펴보시고 작업을 시작하십시오.
+
 ### 화면 
 아래 화면 url은 프로토톨, 도메인 그리고  port 정보는 생략하였습니다. (ex: http://localhost:8080/public --> /public/)
 - /public/intro : 수련회에 대한 정보 제공 페이지 입니다. 
@@ -79,8 +81,10 @@ $ gradlew bootrun
 - /admin/state : 수련회 자료 페이지 입니다. 이 곳에서 수련회 참가자가 입력한 내용을 excel 형태의 자료로 받아볼 수 있습니다. 등록이 모두 끝나면 수련회 진행팀에서 주로 사용하는 화면입니다.
 
 ### 설정 
+계정정보나 숙박에 관한 기본 정보는 properties나 yml 파일에 입력하도록 만들었습니다. 
 
-#### /retreat-front/src/main/resources/application.yml  
+
+- /retreat-front/src/main/resources/application.yml  
 
 mysql 및 was 사용 port 등을 설정합니다.
 
@@ -96,7 +100,9 @@ security:
 
 ```
 
-#### /retreat-front/src/main/resources/retreat.properties
+-  /retreat-front/src/main/resources/retreat.properties
+
+숙박비, 식사금액, 숙박일자 등의 정보를 입력합니다.
 ```
 
 #/retreat-core/src/main/java/org/jejadle/retreat/core/service/RetreatService.java calculate Method 에서 주로 사용합니다. 

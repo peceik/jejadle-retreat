@@ -1,4 +1,4 @@
-#제자들교회 여름 수련회 등록 프로그램 
+# 제자들교회 여름 수련회 등록 프로그램 
 ## 개요 
 이 소스는 제자들교회에서 장년여름수련회등록 프로그램으로 개발하였습니다.
 사용 기술은 Java1.8, gradle, spring-boot-jpa, mysql, thymeleaf, spring-security 등으로 개발하였기 때문에 
@@ -10,21 +10,21 @@
 
 ## 사용방법 
 
-###0.Prerequisites 
+### 0.Prerequisites 
 
 - Mysql 5.7 
 한글을 처리해야 하므로 문자셋은 UTF-8을 setting 하여 주세요. 설정하지 않으면 한글이 정상 출력되지 않습니다.
 - Java 1.8 
 - Gradle
 
-###1.Clone this repo
+### 1.Clone this repo
 
 ```
 $ git clone https://github.com/peceik/jejadle-retreat.git jejadle-retreat
 $ cd jejadle-retreat
 ```
 
-###2.Setting Mysql
+### 2.Setting Mysql
 
 아래 mysql 계정생성 스크립트의 mysql login password는 retreat 입니다. 다른 계정이나 password 를 사용한다면 application.yml 에서 변경내용을 반영하여 주세요. 
 
@@ -37,7 +37,7 @@ grant all privileges on retreat.* to 'retreat'@'%';
 ```
 
 
-###2.Execute Gradle wrapper 
+### 3.Execute Gradle wrapper 
 
 2018.06 현재 gradle 사용버전은 4.8 입니다. gradle 4.8에서는 제자들교회 수련회 등록 프로그램은 동작하지 않습니다. 
 따라서 정상동작하는 2.5 버전으로 동작하도록 설정해야 합니다. 
@@ -47,13 +47,13 @@ $ cd retreat/retreat-front
 $ gradle wrapper
 ```
 
-###3.Execute Gradle bootrun
+### 4.Execute Gradle bootrun
 
 ```
 $ gradlew bootrun
 ```
 
-###4.Check Browser
+### 5.Check Browser
 
 브라우져를 열어서 http://localhost:8080 으로 이동하여 수련회 페이지를 확인합니다. 
 
@@ -68,7 +68,7 @@ $ gradlew bootrun
 
 ### 설정 
 
-####/retreat-front/src/main/resources/application.yml  
+#### /retreat-front/src/main/resources/application.yml  
 
 mysql 및 was 사용 port 등을 설정합니다.
 ```
@@ -80,7 +80,7 @@ security:
   user.role: USER 
 ```
 
-####/retreat-front/src/main/resources/retreat.properties
+#### /retreat-front/src/main/resources/retreat.properties
 ```
 
 #/retreat-core/src/main/java/org/jejadle/retreat/core/service/RetreatService.java calculate Method 에서 주로 사용합니다. 

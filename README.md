@@ -75,13 +75,17 @@ $ gradlew bootrun
 #### /retreat-front/src/main/resources/application.yml  
 
 mysql 및 was 사용 port 등을 설정합니다.
-```
 
+```
+# 기존 설정 생략 
 #/admin/* 화면에 접근시 사용하는 계정 설정 입니다.
 security:
   user.name: admin 
   user.password: 1111 
   user.role: USER 
+
+# 기존 설정 생략 
+
 ```
 
 #### /retreat-front/src/main/resources/retreat.properties

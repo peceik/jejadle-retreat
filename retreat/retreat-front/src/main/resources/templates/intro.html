@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/default">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+<title>수련회등록</title>
+
+
+</head>
+<body>
+
+
+	<div layout:fragment="content">
+
+		<div class="starter-template">
+			<!--  <h1>수련회 소개</h1>-->
+
+			<div class="panel panel-primary">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					<h1>2018년 장년 여름 수련회</h1>
+				</div>
+				<!-- Table -->
+				<table class="table">
+					<tr>
+						<td class="col-md-2 ct">일시</td>
+						<td><h4>2018년 8월 5일~ 8월  7일</h4></td>
+					</tr>
+					<tr>
+						<td class="col-md-2 ct">장소</td>
+						<td><h4>강화도 길상면 그레이스힐(서울도시 가스 강화연수원)</h4>
+								인천시 강화군 길상면 선두리 851-7<br/>
+								<a href="http://www.scggracehill.co.kr">그레이스 힐 홈페이지</a> 
+						</td>
+					</tr>
+					<tr>
+						<td class="col-md-2 ct">준비물</td>
+						<td>성경,찬송가, 세면도구, 옷, 수영복, 그늘막 및 텐트 (해수욕장 이용시), 돗자리, 읽을 책, 필기류 등<br/> 
+						-초등부와 유년부 모두 독립해서 취침합니다.<br/> 
+						아이들 세면도구 (비누, 칫솔, 치약, 샴푸, 수건3) 및 개인 의복,속옷은 꼭 별도의 가방에 준비해주시고 개인물품에는 이름을 써주세요.<br/>
+						 유년부 경우 개인 색연필 준비해주세요.
+						</td>
+					</tr>
+					<tr>
+						<td class="col-md-2 ct">주제</td>
+						<td><h4>하나님 나라, 복음 그리고 공동체</h4></td>
+					</tr>
+					<tr>
+						<td class="col-md-2 ct">강사</td>
+						<td><h4>김형국 목사(나들목 교회)</h4></td>
+					</tr>
+					
+				</table>
+			</div>
+			<img src="/resources/retreat.jpg" th:src="@{/resources/retreat.jpg}"/>
+		</div>
+		
+
+	</div>
+	<!-- /.container -->
+
+</body>
+</html>

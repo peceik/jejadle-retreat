@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                 version="2.0">
+    
+    
+    <named-native-query name="retreat.getDept">
+    	<query>
+		<![CDATA[
+		select 
+			name __name
+			,sort __sort
+		from 
+			dept
+		where
+			1=1
+			#if($StringUtils.isNotEmpty($dept_id)) 
+			and dept_id=$dept_id
+			#end
+			 ]]>
+	    </query>
+    </named-native-query>
+    
+    
+    <named-native-query name="retreat.countPerDept">
+    	<query>
+		<![CDATA[
+		select 
+		  b.name __name
+		  ,count(*) __cnt
+		from 
+		  person a
+		  , dept b
+		where
+		  a.name <> ''
+		  and a.dept=b.dept_id
+		group by b.name
+			 ]]>
+	    </query>
+    </named-native-query>
+    
+    <named-native-query name="retreat.countPerTransfer">
+    	<query>
+		<![CDATA[
+		select 
+		  a.transfer_type __transferType
+		  ,c.name __name
+		  ,count(*) __cnt
+		from 
+		  retreat a
+		  , person b 
+		  , dept c
+		where
+		  a.retreat_id = b.retreat
+		  and b.dept=c.dept_id
+		group by 
+		  a.transfer_type, c.name
+			 ]]>
+	    </query>
+    </named-native-query>
+    
+    <named-native-query name="retreat.countPerStay">
+    	<query>
+		<![CDATA[
+		select 
+		  date_format(stay_date , "%Y-%m-%d") __stay_date
+		  ,count(*) __cnt
+		from stay
+		group by date_format(stay_date, "%Y-%m-%d") 
+		
+			 ]]>
+	    </query>
+    </named-native-query>
+    
+    <named-native-query name="retreat.countPerFood">
+    	<query>
+		<![CDATA[
+		select 
+		  date_format(meal_date, "%Y-%m-%d") __meal_date 
+		  ,meal_type __meal_type
+		  ,sum(count) __cnt
+		from 
+		  meal
+		group by
+		  date_format(meal_date, "%Y-%m-%d")
+		  ,meal_type
+			 ]]>
+	    </query>
+    </named-native-query>
+    
+    <named-native-query name="retreat.lisePerPerson">
+    	<query>
+		<![CDATA[
+		select 
+		  d.retreat_id __id
+		  ,a.name __name
+		  ,c.name __dept_name
+		  ,a.phone __phone
+		  ,d.transfer_type __transfer_type
+		  ,e.name __except_type
+		  ,REPLACE(d.transfer_content1, ',', '') __transfer1
+		  ,d.transfer_content2 __transfer2
+		  , if(s1.stay_id is null, '숙박안함', '숙박') __stay1
+		  , if(s2.stay_id is null, '숙박안함', '숙박') __stay2
+		  , a.option1 __option1 
+		FROM 
+		  person a
+		  left outer join stay s1 on(s1.person = a.person_id and date_format(s1.stay_date , "%Y-%m-%d")='2018-08-05')
+		  left outer join stay s2 on(s2.person = a.person_id and date_format(s2.stay_date , "%Y-%m-%d")='2018-08-06')
+		  left outer join dept c on(c.dept_id = a.dept)  
+		  left outer join retreat d ON (d.retreat_id = a.retreat)
+		  left outer join except_type e ON(e.except_type_id = a.except_type)
+			 ]]>
+	    </query>
+    </named-native-query>
+    
+    <named-native-query name="retreat.amountListPerFamily">
+    	<query>
+		<![CDATA[
+		select 
+		  a.retreat_id __id
+		  ,a.reg_name __reg_name
+		  , a.stay_amount __stay_amount
+		  , a.food_amount __food_amount
+		  , a.except_amount __except_amount
+		  , a.discount_amount __discount_amount
+		  , a.offering_amount __offering_amount
+		  , a.total_amount __total_amount
+		  , a.reg_date __reg_date
+		  , a.discount1 __discount1
+		  , a.discount2 __discount2
+		  , ifnull(m1.count, 0) __m1_cnt
+		  , ifnull(m2.count, 0) __m2_cnt
+		  , ifnull(m3.count, 0) __m3_cnt
+		  , ifnull(m4.count, 0) __m4_cnt
+		  , ifnull(m5.count, 0) __m5_cnt
+		  , ifnull(m6.count, 0) __m6_cnt
+		  , a.program1 __program1
+		  , a.remarks __remark
+		from 
+		  retreat a
+		  left outer join meal m1 on(m1.retreat = a.retreat_id and date_format(m1.meal_date , "%Y-%m-%d")='2018-08-05' and m1.meal_type='dinner')
+		  left outer join meal m2 on(m2.retreat = a.retreat_id and date_format(m2.meal_date , "%Y-%m-%d")='2018-08-06' and m2.meal_type='breakfast')
+		  left outer join meal m3 on(m3.retreat = a.retreat_id and date_format(m3.meal_date , "%Y-%m-%d")='2018-08-06' and m3.meal_type='lunch')
+		  left outer join meal m4 on(m4.retreat = a.retreat_id and date_format(m4.meal_date , "%Y-%m-%d")='2018-08-06' and m4.meal_type='dinner')
+		  left outer join meal m5 on(m5.retreat = a.retreat_id and date_format(m5.meal_date , "%Y-%m-%d")='2018-08-07' and m5.meal_type='breakfast')
+		  left outer join meal m6 on(m6.retreat = a.retreat_id and date_format(m6.meal_date , "%Y-%m-%d")='2018-08-07' and m6.meal_type='lunch')
+			 ]]>
+	    </query>
+    </named-native-query>
+    
+    
+               
+</entity-mappings>

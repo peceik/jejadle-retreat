@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/default">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+<title>수련회등록</title>
+
+
+</head>
+<body>
+
+
+	<div layout:fragment="content">
+
+
+		<div>
+			<div class="page-header">
+				<h1>
+					제자들 교회 여름 수련회 자료<small>for staff</small>
+				</h1>
+			</div>
+			<!-- target="dataFrame"  -->
+			<form name="frm" id="frm"  th:action="@{/admin/excel-data}">
+				<input type="hidden" name="fileName" id="fileName" value="" />				
+				<div>
+					<div class="col-sm-3">
+						<select class="form-control" name="dataType" id="dataType">
+							<option value="retreat.lisePerPerson">개인별등록내역</option>
+							<option value="retreat.amountListPerFamily">가족별등록내역</option>
+							<option value="retreat.countPerDept">등록현황(부서별)</option>
+							<option value="retreat.countPerTransfer">등록현황(교통수단별)</option>
+							<option value="retreat.countPerStay">전체숙박인원</option>
+							<option value="retreat.countPerFood">전체식판</option>
+						</select>
+					</div>
+					<!-- 
+					<div class="col-sm-3">
+						<input type="password" class="form-control" id="pass" name="pass"
+							value="" placeholder="Enter Password"/>
+					</div>
+					 -->
+					<button type="button" class="btn btn-default" id="saveBtn">저장</button>
+				</div>
+			</form>
+		</div>
+		<iframe name="dataFrame" width="0" height="0"></iframe>
+		
+		<script>
+		$(document).ready(function() {
+			//$('#listTable').DataTable();
+			$('#fileName').val($("#dataType option:selected").text());		
+			
+			$('#dataType').change(function(){
+				$('#fileName').val($("#dataType option:selected").text());					
+			});
+			
+			
+			
+			$('#saveBtn').click(function(){
+				$('#frm').submit();
+			});
+			
+
+		});
+		</script>
+
+
+	</div>
+
+	
+
+	
+	<!-- /.container -->
+
+</body>
+</html>

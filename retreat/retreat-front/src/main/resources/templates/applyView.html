@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko" layout:decorator="layout/default">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+<title>수련회등록</title>
+
+</head>
+<body>
+	
+
+	<div layout:fragment="content">
+
+
+		<div>
+			<h1>수련회 등록 확인</h1>
+			
+			<form method="post">
+				<table class="table">
+					<thead>
+					<tr>
+						<th>내역</th>
+						<th>금액</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>숙박</td>
+						<td th:text="${#numbers.formatInteger(retreat.stayAmount,1,'COMMA')}"></td>
+					</tr>
+					<tr>
+						<td>식대</td>
+						<td th:text="${#numbers.formatInteger(retreat.foodAmount,1,'COMMA') }"></td>
+					</tr>
+					<tr>
+						<td>나눔헌금</td>
+						<td th:text="${#numbers.formatInteger(retreat.offeringAmount,1,'COMMA')}"></td>
+					</tr>
+					<tr>
+						<td>할인금액</td>
+						<td th:text="${#numbers.formatInteger(retreat.discountAmount,1,'COMMA')}"></td>
+					</tr>
+					<tr>
+						<td>면제금액</td>
+						<td th:text="${#numbers.formatInteger(retreat.exceptAmount,1,'COMMA')}"></td>
+					</tr>
+					<tr>
+						<td>합계</td>
+						<td th:text="${#numbers.formatInteger(retreat.totalAmount,1,'COMMA')}"></td>
+					</tr>
+					</tbody>
+				</table>
+				<!-- 
+				<textarea class="form-control" rows="3"></textarea>
+				<button class="btn btn-default">메시지 발송</button>
+				 -->
+				
+				<p th:text="${retreat.regName}+'님 감사합니다. 제자들 교회 수련회에 등록 신청하였습니다.'">
+				님 감사합니다. 제자들 교회 장년부 새생활 수련회에  등록신청 되었습니다.
+				</p>
+				<p th:if="${session.smsResult=='200'}">
+				수련회 등록 회비와 계좌번호는 SMS 메시지로 발송되었습니다.
+				</p>
+				<p th:if="${session.smsResult=='412'}">
+				입력한 전화번호로 SMS 메시지 발송을 실패하였습니다. 화면에서 금액과 계좌번호를 확인하여 주세요.
+				</p>
+				<p>
+				<span th:text="${account}">시티은행 103-01904-26301 (예금주:정정일)</span><br/>
+				수련회 문의 Tel. 02) 488-9777
+				</p>
+				 
+				<a th:href="@{/admin/list}" sec:authorize="isAuthenticated()"><button type="button" class="btn btn-default">확인</button></a>
+				<a th:href="@{/public/}" sec:authorize="isAnonymous()"><button type="button" class="btn btn-default">확인</button></a>
+
+			</form>
+		</div>
+		
+		<script>
+		
+		$(document).ready(function() {
+		});
+		
+		</script>
+
+	</div>
+	<!-- /.container -->
+	
+</body>
+</html>

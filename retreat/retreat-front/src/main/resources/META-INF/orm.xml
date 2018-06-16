@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                 version="2.0">
+    <named-native-query name="testNativeSQL">
+	    <query>
+		<![CDATA[
+		select 
+			c.Prt_Menu_Info_Seq
+			,c.Menu_Info_Seq
+			,c.Menu_Knd_Cd
+			,c.Menu_Nm
+			,c.Menu_Url
+			,c.Sort_Seq
+			,c.Menu_Depth
+			,c.Menu_Use_Yn
+			,b.Grp_View_Grade 
+		from 
+			Mngr a
+			,Auth_Grp b
+			,Menu_Info c		
+		where a.Auth_Grp_Seq=b.Auth_Grp_Seq			
+			and a.Mngr_Id='aa' 
+			and b.Grp_Use_Yn ='Y' 
+			and c.Menu_Use_Yn='Y'	
+			and b.Menu_Info_Seq=c.Menu_Info_Seq  
+			and b.Grp_View_Grade='Y' 
+			 order by c.Menu_Depth asc ,c.Sort_Seq asc
+			 ]]>
+	    </query>
+    </named-native-query>    
+</entity-mappings>

@@ -1,0 +1,12 @@
+/build/
+/logs/
+*.log
+/bin/
+/.settings/
+gradle-wrapper.*
+gradlew.bat
+gradlew
+
+
+.classpath
+.project

@@ -1,0 +1,8 @@
+<html>
+    <ul th:fragment="fragment_menu(menuItemsList)">
+            <li th:each="menuItem : ${menuItemsList}" >
+            	<a href="" th:href="'#'" th:text="${menuItem.menu.menuNm}" th:attr="data-menu-id=${menuItem.menu.id}, data-menu-url=${menuItem.menu.menuUrl},data-menu-seq=${menuItem.menu.menuInfoSeq}" data-role="php_menu"></a>
+                <ul th:include="fragments/menuFragment::fragment_menu(menuItemsList=${menuItem.children})" th:unless="${#lists.isEmpty(menuItem.children)}" th:class="'depth'+(${menuItem.menu.menuDepth}+1)">11111</ul>
+            </li>
+    </ul>
+</html>

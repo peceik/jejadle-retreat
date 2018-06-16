@@ -1,0 +1,39 @@
+dependencies {
+	compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	compile group: 'commons-io', name: 'commons-io', version: '2.4'
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile("org.hibernate:hibernate-validator")
+    
+    compile group: 'javax.el', name: 'el-api', version: '2.2'
+    // https://mvnrepository.com/artifact/org.glassfish.web/javax.el
+	compile group: 'org.glassfish.web', name: 'javax.el', version: '2.2.4'
+    
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+    
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.4'
+	
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore
+	compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.3.2'
+	
+	// https://mvnrepository.com/artifact/commons-codec/commons-codec
+	compile group: 'commons-codec', name: 'commons-codec', version: '1.6'
+	
+    
+    
+	compile group: 'org.apache.poi', name: 'poi', version: '3.9'
+	compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
+	
+	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
+	
+	
+	
+	
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.4'
+	
+}
+

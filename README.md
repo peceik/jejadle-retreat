@@ -75,7 +75,8 @@ $ gradlew bootrun
 수정이 필요한 경우에 아래 내용을 천천히 살펴보시고 작업을 시작하십시오.
 
 ### 화면 
-아래 화면 url은 프로토톨, 도메인 그리고  port 정보는 생략하였습니다. (ex: http://localhost:8080/public --> /public/)
+아래 화면 url은 프로토톨, 도메인 그리고  port 정보는 생략하였습니다.  
+ (ex: http://localhost:8080/public --> /public/)
 - /public/intro : 수련회에 대한 정보 제공 페이지 입니다. 
 - /public/ : 수련회 등록내용을 입력하는 페이지 입니다.
 - /admin/list : 수련회 목록 페이지입니다 관리자가 입력내용을 확인하고 수정할 수 있는 화면 입니다.

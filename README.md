@@ -17,9 +17,10 @@ Java 기반의 open source를 기반으로 개발 되었습니다.
 
 ### 0.Prerequisites 
 - 1 G 이상의 Memory를 가지고 있는 Server
-클라우드 서버(AWS, digitalocean)도 상관없습니다. 200 가정의 수련회 등록을 받은 경우에는 AWS 의 freetier 로도 충분히 감당할 수 있었습니다.
+클라우드 서버(AWS, digitalocean)도 상관없습니다. 200 가정정도 수련회 등록을 받는 동안 AWS 의 freetier 로도 충분히 감당할 수 있었습니다.
 - Mysql 5.7 
-한글을 처리해야 하므로 문자셋은 UTF-8로 setting 하여 주세요. 설정하지 않으면 한글이 정상 출력되지 않습니다.
+한글을 처리해야 하므로 문자셋은 UTF-8로 setting 하여 주세요. 설정하지 않으면 한글이 정상 출력되지 않습니다.   
+JPA는 DB에 종속적이진 않지만 보고서 추출시 mysql native query를 사용하므로 반드시 Mysql을 미리 설치하셔야 합니다.
 - Java 1.8 
 - Gradle
 - Git
